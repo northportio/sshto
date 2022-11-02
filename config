@@ -1,0 +1,33 @@
+#Host DUMMY #Test Group 1#
+Host test #Test Name
+        HostName 127.0.0.1
+        User root
+        Port 22
+IdentityFile ~/.ssh/id_ed25519
+#Host DUMMY #Test Group 2#
+Host test2 #Test Name
+	HostName 127.0.0.2
+	User root
+	Port 22
+        IdentityFile ~/.ssh/id_rsa
+    	PubkeyAcceptedAlgorithms +ssh-rsa
+    	HostkeyAlgorithms +ssh-rsa
+	StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
+Host test3 #Test Name
+        HostName 127.0.0.3
+        User test
+        Port 22
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
+################################
+### SSH: https://aditsachde.com/posts/yubikey-ssh/
+Host *
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  AddKeysToAgent yes
+  ## YUBIKEY SSH AUTH KEY
+  IdentityFile ~/.ssh/id_ed25519_sk
+  ## USER ADDITIONS FOR BASIC SSH AUTH
+#  IdentityFile ~/.ssh/id_ed25519
+#  IdentityFile ~/.ssh/id_rsa
